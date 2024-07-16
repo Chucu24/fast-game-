@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cara o Escudo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #87CEEB; /* Celeste */
+            margin: 0;
+            padding: 20px;
+            position: relative;
+        }
+        #header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #result {
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #cornerImage {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 100px; /* Ajusta el tamaño según sea necesario */
+            height: auto;
+            cursor: pointer;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">Estamos mejorando chiplack chiplack</div>
+    <div id="gameContainer">
+        <button id="playButton">Dar clic para jugar</button>
+        <button id="retryButton">Intentarlo de nuevo</button>
+        <div id="result">
+            <img id="caraImage" src="cara.png" alt="Cara">
+            <img id="escudoImage" src="escudo.png" alt="Escudo">
+        </div>
+    </div>
+    <img id="cornerImage" src="chris.png" alt="Imagen de esquina">
+    <script>
+        const playButton = document.getElementById('playButton');
+        const retryButton = document.getElementById('retryButton');
+        const caraImage = document.getElementById('caraImage');
+        const escudoImage = document.getElementById('escudoImage');
+        const cornerImage = document.getElementById('cornerImage');
+
+        function showRandomImage() {
+            setTimeout(function() {
+                const isCara = Math.random() < 0.5;
+                caraImage.style.display = isCara ? 'block' : 'none';
+                escudoImage.style.display = isCara ? 'none' : 'block';
+            }, 2000); // Espera de 2 segundos
+        }
+
+        playButton.addEventListener('click', showRandomImage);
+        retryButton.addEventListener('click', showRandomImage);
+
+        cornerImage.addEventListener('click', function() {
+            cornerImage.src = cornerImage.src.includes('chris.png') ? '23.png' : 'chris.png';
+        });
+    </script>
+</body>
+</html>
